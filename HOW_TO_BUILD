@@ -1,0 +1,25 @@
+Directory Structure:
++- $HOME
+ +- SASiDet/
+
+navigate to the directory above SASiDet/ and then create a build directory
+
+$ cd $HOME
+$ mkdir SASiDet_build
+
+Directory Structure:
++- $HOME
+ +- SASiDet/
+ +- SASiDet_build/
+
+$ cd $HOME/SASiDet_build
+$ cmake -DGeant4_DIR=/home/where/you/installed/Geant4 $HOME/SASiDet
+
+Now compile:
+$ make
+
+Run in interactive mode:
+$ ./SASiDet
+
+Or run provided macro file:
+$ ./SASiDet thesis_no_abs_const.mac

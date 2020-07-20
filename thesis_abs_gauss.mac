@@ -1,0 +1,45 @@
+# Thesis Simulation Macro Yes Absorber
+# Milan Roberson
+
+/control/verbose 2
+/run/verbose 2
+
+/testem/det/setAbsPresent true
+
+# use livermore physics
+/testem/phys/addPhysics emlivermore
+#set run cut?????
+# /run/setCut 1 angstrom
+/run/initialize
+
+/gps/particle gamma
+/gps/pos/type Beam
+
+# the incident surface is the Y-Z plane
+/gps/pos/rot1 0 1 0
+/gps/pos/rot2 0 0 1
+
+# beam spot is centered at the origin and
+# is of Gaussian shape with .1 mm central
+# plateau with 120 um standard deviation
+# /gps/pos/shape Circle
+/gps/pos/centre -10. 0. 0. cm
+# /gps/pos/radius 0 mm
+/gps/pos/sigma_r 0.120 mm
+
+# the beam is travelling along the x-axis
+/gps/ang/rot1 0 0 1
+/gps/ang/rot2 0 1 0
+/gps/ang/type beam1d
+
+# beam energy profile
+/gps/ene/type Gauss
+/gps/ene/mono 6 keV
+/gps/ene/sigma 1. keV
+
+
+/analysis/setFileName yes_abs
+/analysis/h1/set 1 200 0.01 10 keV
+
+/run/printProgress 10000
+/run/beamOn 100000
